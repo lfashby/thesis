@@ -19,6 +19,7 @@ class ProjectHome extends React.Component {
     this.associateOptions = this.associateOptions.bind(this);
     this.toggle = this.toggle.bind(this);
     this.redirectToSection = this.redirectToSection.bind(this);
+    this.noLongerFromProjectHome = this.noLongerFromProjectHome.bind(this);
   }
 
   onSectionClick(obj, options) {
@@ -37,6 +38,12 @@ class ProjectHome extends React.Component {
   toggle() {
     this.setState({
       open: !this.state.open
+    })
+  }
+
+  noLongerFromProjectHome() {
+    this.setState({
+      fromHome: false
     })
   }
 
@@ -62,6 +69,7 @@ class ProjectHome extends React.Component {
           <DisplaySections
             fromProjectHome={this.state.fromHome}
             collapse={this.toggle}
+            noLongerFromProjectHome={this.noLongerFromProjectHome}
           />
         </div>
       </div>

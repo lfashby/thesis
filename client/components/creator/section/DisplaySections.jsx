@@ -20,7 +20,8 @@ class DisplaySections extends React.Component {
       showAddSection: false,
       showEdit: false,
       idOfClickedOnSection: null,
-      previous: null    
+      previous: null,
+      prev: -1
     };
     this.revealEdit = this.revealEdit.bind(this);
     this.revealAddSection = this.revealAddSection.bind(this);
@@ -126,21 +127,24 @@ class DisplaySections extends React.Component {
   }
 
   beginEdit(e, section, fromProjectHome) {
+    console.log(fromProjectHome);
     e.stopPropagation();
     if (!fromProjectHome) {
-      
       this.onSectionClick(section, this.props.fromProjectHome, this.props.fromSectionHome);
       this.highlightSelected(section.id);
+      console.log('should reeelalaldlasdlasldf')
       this.setState({
         showEdit: !this.state.showEdit,
         idOfClickedOnSection: section.id
       });
     } else {
+      console.log('we are in the from project home block')
       this.props.actions.changeCurrentSection(section);
       this.setState({
         showEdit: !this.state.showEdit,
         idOfClickedOnSection: section.id
       });
+      // this.props.noLongerFromProjectHome()
     }
   }
 
